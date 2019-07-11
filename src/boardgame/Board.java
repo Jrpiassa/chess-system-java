@@ -14,18 +14,23 @@ public class Board {
 
 	public int getRows() {
 		return rows;
-	}	
+	}
 
 	public int getColunms() {
 		return colunms;
 	}
-	
+
 	public Piece piece(int row, int colunm) {
 		return pieces[row][colunm];
 	}
-	
+
 	public Piece piece(Position position) {
 		return pieces[position.getRow()][position.getColunm()];
+	}
+
+	public void placePeace(Piece piece, Position position) {
+		pieces[position.getRow()][position.getColunm()] = piece;
+		piece.position = position;
 	}
 
 }
