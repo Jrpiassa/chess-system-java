@@ -28,8 +28,15 @@ public class ChessMatch {
 	}
 
 	private void initialSetup() {
-		board.placePeace(new Rook(board, Color.WHITE), new Position(2, 1));
-		board.placePeace(new King(board, Color.BLACK), new Position(0, 4));
-		board.placePeace(new King(board, Color.WHITE), new Position(7, 4));
+		placeNewPiece('b', 6, new Rook(board, Color.WHITE));
+		placeNewPiece('e', 8, new King(board, Color.BLACK));
+		placeNewPiece('e', 1, new King(board, Color.WHITE));
+		// board.placePeace(new Rook(board, Color.WHITE), new Position(2, 1));
+		// board.placePeace(new King(board, Color.BLACK), new Position(0, 4));
+		// board.placePeace(new King(board, Color.WHITE), new Position(7, 4));
+	}
+
+	private void placeNewPiece(char colunm, int row, ChessPiece chessPiece) {
+		board.placePeace(chessPiece, new ChessPosition(colunm, row).toPosition());
 	}
 }
