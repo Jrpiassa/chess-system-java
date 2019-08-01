@@ -43,7 +43,6 @@ public class ChessPosition {
 	
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
 		return "" + this.colunm + ";"+ this.row;
 	}
 
