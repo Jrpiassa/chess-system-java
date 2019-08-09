@@ -8,7 +8,8 @@ public enum Mensagens {
 	ERROAOLERPOSICAODOXADREZ("Erro ao ler posição do xadrez. Os valores válidos são de A1 ate H8 e Coluna1 ate Coluna8 !."),
 	NAOHAPECANAPOSICAODEORIGEM("Não há peça na posição de origem"),
 	SOURCE("Origem: "), 
-	TARGET("Destino: ");
+	TARGET("Destino: "),
+	NAOHAMOVIMENTOSPOSSIVEISPARAAPECAESCOLHIDA("Não existe movimentos possiveis para a peça escolhida!");
 
 	private String msg;
 

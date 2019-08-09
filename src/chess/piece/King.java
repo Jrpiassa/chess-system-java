@@ -15,4 +15,13 @@ public class King extends ChessPiece {
 		return "K";
 	}
 
+	/**
+	 * Metodo que implementa os possiveis movimentos para o rei
+	 */
+	@Override
+	public boolean[][] possibleMoves() {
+		boolean[][] mat = new boolean[getBoard().getRows()][getBoard().getColunms()];
+		return mat;
+	}
+
 }

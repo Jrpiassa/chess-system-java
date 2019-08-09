@@ -64,9 +64,17 @@ public class ChessMatch {
 		return pecaCapturada;
 	}
 
+	/**
+	 * Metodo que valida a posicao de origem de uma peca
+	 * @param position
+	 */
 	private void validateSoucePosition(Position position) {
 		if(!board.thereIsAPiece(position)) {
 			throw new ChessException(Mensagens.NAOHAPECANAPOSICAODEORIGEM.getMsg());
+		}
+		
+		if(!board.piece(position).isThereAnyPossibleMove()) {
+			throw new ChessException(Mensagens.NAOHAMOVIMENTOSPOSSIVEISPARAAPECAESCOLHIDA.getMsg());
 		}
 		
 	}
