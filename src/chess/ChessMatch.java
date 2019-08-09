@@ -1,8 +1,11 @@
 package chess;
 
 import boardgame.Board;
+import boardgame.Piece;
+import boardgame.Position;
 import chess.piece.King;
 import chess.piece.Rook;
+import utils.Mensagens;
 
 public class ChessMatch {
 	private static final int ROW = 8;
@@ -44,5 +47,27 @@ public class ChessMatch {
 
 	private void placeNewPiece(char colunm, int row, ChessPiece chessPiece) {
 		board.placePeace(chessPiece, new ChessPosition(colunm, row).toPosition());
+	}
+
+	public ChessPiece performChessMove(ChessPosition sourcePosition, ChessPosition targetPosition) {
+		Position source = sourcePosition.toPosition();
+		Position target = targetPosition.toPosition();
+		validateSoucePosition(source);
+		Piece pecaCapturada = makeMove(source, target);
+		return (ChessPiece) pecaCapturada;
+	}
+
+	private Piece makeMove(Position source, Position target) {
+		Piece p = board.removePiece(source);
+		Piece pecaCapturada = board.removePiece(target);
+		board.placePeace(p, target);
+		return pecaCapturada;
+	}
+
+	private void validateSoucePosition(Position position) {
+		if(!board.thereIsAPiece(position)) {
+			throw new ChessException(Mensagens.NAOHAPECANAPOSICAODEORIGEM.getMsg());
+		}
+		
 	}
 }

@@ -38,7 +38,7 @@ public class ChessPosition {
 	}
 
 	protected static ChessPosition fromPosition(Position position) {
-		return new ChessPosition((char) (INICOLUNAXADREZ - position.getColunm()), FIMLINHAXADREZ - position.getRow());
+		return new ChessPosition((char) (INICOLUNAXADREZ - position.getColumn()), FIMLINHAXADREZ - position.getRow());
 	}
 	
 	@Override

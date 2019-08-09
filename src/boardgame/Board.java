@@ -42,7 +42,7 @@ public class Board {
 			throw new BoardException(Mensagens.POSITIONNOTONTHEBOARD.getMsg());
 		}
 
-		return pieces[position.getRow()][position.getColunm()];
+		return pieces[position.getRow()][position.getColumn()];
 	}
 
 	public void placePeace(Piece piece, Position position) {
@@ -51,8 +51,24 @@ public class Board {
 			throw new BoardException(Mensagens.JAEXISTEUMAPECANESTAPOSICAO.getMsg() + position);
 		}
 
-		pieces[position.getRow()][position.getColunm()] = piece;
+		pieces[position.getRow()][position.getColumn()] = piece;
 		piece.position = position;
+	}
+
+	public Piece removePiece(Position position) {
+
+		if (!positionExists(position)) {
+			throw new BoardException(Mensagens.POSITIONNOTONTHEBOARD.getMsg());
+		}
+
+		if (piece(position) == null) {
+			return null;
+		}
+
+		Piece aux = piece(position);
+		aux.position = null;
+		pieces[position.getRow()][position.getColumn()] = null;
+		return aux;
 	}
 
 	private boolean positionExists(int row, int col) {
@@ -60,7 +76,7 @@ public class Board {
 	}
 
 	public boolean positionExists(Position position) {
-		return positionExists(position.getRow(), position.getColunm());
+		return positionExists(position.getRow(), position.getColumn());
 	}
 
 	public boolean thereIsAPiece(Position position) {
