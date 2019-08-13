@@ -53,6 +53,7 @@ public class ChessMatch {
 		Position source = sourcePosition.toPosition();
 		Position target = targetPosition.toPosition();
 		validateSoucePosition(source);
+		validateTargetPosition(source, target);
 		Piece pecaCapturada = makeMove(source, target);
 		return (ChessPiece) pecaCapturada;
 	}
@@ -66,15 +67,27 @@ public class ChessMatch {
 
 	/**
 	 * Metodo que valida a posicao de origem de uma peca
+	 * 
 	 * @param position
 	 */
 	private void validateSoucePosition(Position position) {
-		if(!board.thereIsAPiece(position)) {
+		if (!board.thereIsAPiece(position)) {
 			throw new ChessException(Mensagens.NAOHAPECANAPOSICAODEORIGEM.getMsg());
 		}
-		
-		if(!board.piece(position).isThereAnyPossibleMove()) {
+
+		if (!board.piece(position).isThereAnyPossibleMove()) {
 			throw new ChessException(Mensagens.NAOHAMOVIMENTOSPOSSIVEISPARAAPECAESCOLHIDA.getMsg());
+		}
+	}
+	
+	/**
+	 * Metodo que valida a posicao de destino de uma peca
+	 * @param source
+	 * @param target
+	 */
+	private void validateTargetPosition(Position source, Position target) {
+		if(!board.piece(source).possibleMove(target)) {
+			throw new ChessException("A peça escolhida não pode ser movida para a posição de destino!");
 		}
 		
 	}
